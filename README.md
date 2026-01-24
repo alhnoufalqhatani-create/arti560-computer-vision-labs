@@ -42,7 +42,7 @@ This repository contains code, datasets, and exercises for various **computer vi
 ```
 git clone <your_forked_repository_url> <directory-name>
 cd <repository_folder>
-
+```
 3. **Create a Conda environment**
 Replace the python version with the version currently installed on your device.
 ```
