@@ -28,29 +28,34 @@ This repository contains code, datasets, and exercises for various **computer vi
 | 13 |  |
 | 14 |  |
 
-## Requirements
-- Python 3.10+  
-- TensorFlow, Keras, and common data science packages  
-
 ## Installation Using Conda
 
-1. **Clone the repository**
+1. **Fork the repository**
+   - Open this repository on GitHub.
+   - Click the **Fork** button (top-right corner).
+   - This will create your own copy of the repository under your GitHub account.
+
+2. **Clone your forked repository**
+   - Go to your forked version of the repository on GitHub.
+   - Click **Code** → copy the URL.
+   - Open Git Bash and then run:
 ```
-bash
-git clone <repository_url>
+git clone <your_forked_repository_url> <directory-name>
 cd <repository_folder>
+
+3. **Create a Conda environment**
+Replace the python version with the version currently installed on your device.
+```
+conda create -n cv_lab python=3.13.0
 ```
 
-2. Create a Conda environment
+4. **Activate the environment**
 ```
-conda create -n cv_lab python=3.10
-```
-3. Activate the environment
-```
+source activate base
 conda activate cv_lab
 ```
 
-4. Install required packages
+5. **Install required packages**
 
 ```
 pip install -r requirements.txt
