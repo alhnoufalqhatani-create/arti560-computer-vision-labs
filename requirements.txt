@@ -6,3 +6,5 @@ pandas
 opencv-python
 seaborn
 scikit-learn
+ipython
+ipykernel
