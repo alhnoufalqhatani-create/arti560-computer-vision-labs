@@ -1,0 +1,34 @@
+Lab 09 Depth Anything terminal commands
+Python: A:\envs\tf210\python.exe
+Working directory: A:\arti560-computer-vision-labs\lab09-depth-estimation\Depth-Anything
+
+$ A:\envs\tf210\python.exe run.py --encoder vits --img-path assets/examples/demo1.png --outdir ../outputs/grayscale --pred-only --grayscale
+Total parameters: 24.79M
+xFormers not available
+xFormers not available
+
+  0%|          | 0/1 [00:00<?, ?it/s]
+100%|##########| 1/1 [00:00<00:00,  1.38it/s]
+100%|##########| 1/1 [00:00<00:00,  1.38it/s]
+
+$ A:\envs\tf210\python.exe run.py --encoder vits --img-path assets/examples/demo2.png --outdir ../outputs/color --pred-only
+Total parameters: 24.79M
+xFormers not available
+xFormers not available
+
+  0%|          | 0/1 [00:00<?, ?it/s]
+100%|##########| 1/1 [00:00<00:00,  1.35it/s]
+100%|##########| 1/1 [00:00<00:00,  1.35it/s]
+
+$ A:\envs\tf210\python.exe run_video.py --encoder vits --video-path assets/examples_video/davis_dolphins.mp4 --outdir ../outputs/video
+Total parameters: 24.79M
+Progress 1/1, Processing assets/examples_video/davis_dolphins.mp4
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+xFormers not available
+xFormers not available
+
+Generated outputs:
+outputs\grayscale\demo1_depth.png
+outputs\color\demo2_depth.png
+outputs\video\davis_dolphins_video_depth.mp4
+outputs\video\davis_dolphins_video_depth_preview.png
