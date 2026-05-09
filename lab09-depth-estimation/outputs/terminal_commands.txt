@@ -6,19 +6,21 @@ $ A:\envs\tf210\python.exe run.py --encoder vits --img-path assets/examples/demo
 Total parameters: 24.79M
 xFormers not available
 xFormers not available
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
 
   0%|          | 0/1 [00:00<?, ?it/s]
-100%|##########| 1/1 [00:00<00:00,  1.38it/s]
-100%|##########| 1/1 [00:00<00:00,  1.38it/s]
+100%|██████████| 1/1 [00:00<00:00,  1.20it/s]
+100%|██████████| 1/1 [00:00<00:00,  1.20it/s]
 
 $ A:\envs\tf210\python.exe run.py --encoder vits --img-path assets/examples/demo2.png --outdir ../outputs/color --pred-only
 Total parameters: 24.79M
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
 xFormers not available
 xFormers not available
 
   0%|          | 0/1 [00:00<?, ?it/s]
-100%|##########| 1/1 [00:00<00:00,  1.35it/s]
-100%|##########| 1/1 [00:00<00:00,  1.35it/s]
+100%|██████████| 1/1 [00:01<00:00,  1.31s/it]
+100%|██████████| 1/1 [00:01<00:00,  1.31s/it]
 
 $ A:\envs\tf210\python.exe run_video.py --encoder vits --video-path assets/examples_video/davis_dolphins.mp4 --outdir ../outputs/video
 Total parameters: 24.79M
