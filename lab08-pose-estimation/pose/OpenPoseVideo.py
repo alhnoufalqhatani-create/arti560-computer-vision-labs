@@ -74,12 +74,12 @@ while cv2.waitKey(1) < 0:
 
         # Find global maxima of the probMap.
         minVal, prob, minLoc, point = cv2.minMaxLoc(probMap)
-        
+
         # Scale the point to fit on the original image
         x = (frameWidth * point[0]) / W
         y = (frameHeight * point[1]) / H
 
-        if prob > threshold : 
+        if prob > threshold :
             cv2.circle(frameCopy, (int(x), int(y)), 8, (0, 255, 255), thickness=-1, lineType=cv2.FILLED)
             cv2.putText(frameCopy, "{}".format(i), (int(x), int(y)), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2, lineType=cv2.LINE_AA)
 
@@ -101,7 +101,13 @@ while cv2.waitKey(1) < 0:
     cv2.putText(frame, "time taken = {:.2f} sec".format(time.time() - t), (50, 50), cv2.FONT_HERSHEY_COMPLEX, .8, (255, 50, 0), 2, lineType=cv2.LINE_AA)
     # cv2.putText(frame, "OpenPose using OpenCV", (50, 50), cv2.FONT_HERSHEY_COMPLEX, 1, (255, 50, 0), 2, lineType=cv2.LINE_AA)
     # cv2.imshow('Output-Keypoints', frameCopy)
-    #cv2.imshow('Output-Skeleton', frame)
+
+    cv2.namedWindow('Output-Skeleton', cv2.WINDOW_NORMAL)
+
+
+    cv2.imshow('Output-Skeleton', frame)
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
 
     vid_writer.write(frame)
 

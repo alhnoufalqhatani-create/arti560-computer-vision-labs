@@ -21,20 +21,20 @@ def pose_video(frame):
     img = torch.tensor(np.array([img.numpy()]))
     # Load the image into the computation device.
     img = img.to(device)
-    
+
     # Gradients are stored during training, not required while inference.
     with torch.no_grad():
         t1 = time.time()
         output, _ = model(img)
         t2 = time.time()
         fps = 1/(t2 - t1)
-        output = non_max_suppression_kpt(output, 
+        output = non_max_suppression_kpt(output,
                                          0.25,    # Conf. Threshold.
                                          0.65,    # IoU Threshold.
                                          nc=1,   # Number of classes.
                                          nkpt=17, # Number of keypoints.
                                          kpt_label=True)
-        
+
         output = output_to_keypoint(output)
 
     # Change format [b, c, h, w] to [h, w, c] for displaying the image.
@@ -44,7 +44,7 @@ def pose_video(frame):
 
     for idx in range(output.shape[0]):
         plot_skeleton_kpts(nimg, output[idx, 7:].T, 3)
-        
+
     return nimg, fps
 
 
@@ -70,9 +70,7 @@ _ = model.float().eval()
 model.to(device)
 
 # Provide the list of paths to your chosen videos her
-videos = [
-        'skydiving',
-        'far-away']
+videos = ['yoga']
 
 file_name = videos[0] + '.mp4'
 vid_path = '../media/' + file_name
@@ -82,12 +80,11 @@ fps = int(cap.get(cv2.CAP_PROP_FPS))
 ret, frame = cap.read()
 h, w, _ = frame.shape
 
-# May need to change the w, h as letterbox function reshapes the image.
-#out = cv2.VideoWriter('./' + file_name + '_yolov7', 
-#                       cv2.VideoWriter_fourcc(*'mp4v'), 
-#                       fps, (w, h))
+# Letterbox reshapes the image, so use the letterboxed size for the writer.
+lb_sample = letterbox(frame, input_size, stride=64, auto=True)[0]
+out_h, out_w, _ = lb_sample.shape
 
-out = cv2.VideoWriter(f"{save_name}_yolo7.avi",cv2.VideoWriter_fourcc('M','J','P','G'), 10, w,h)
+out = cv2.VideoWriter(f"{videos[0]}_yolov7_output.avi", cv2.VideoWriter_fourcc('M','J','P','G'), 10, (out_w, out_h))
 
 #-------------------------------------------------------------------------------#
 
@@ -95,7 +92,7 @@ out = cv2.VideoWriter(f"{save_name}_yolo7.avi",cv2.VideoWriter_fourcc('M','J','P
 if __name__ == '__main__':
     while True:
         ret, frame = cap.read()
-        
+
         if not ret:
             print('Unable to read frame. Exiting ..')
             break
